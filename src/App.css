@@ -4,4 +4,26 @@
   color: white;
   height: 10vh;
   font-size: 24px;
+  align-items: center;
+}
+
+.search-icon {
+  margin-left: 2em;
+}
+
+.search-input {
+  background-color: transparent;
+  color:white;
+  border: none;
+  outline:white;
+  height:30px;
+  margin-left: 1em;
+}
+
+.search-input::-webkit-search-cancel-button{
+
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  background: white;
 }
