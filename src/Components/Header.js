@@ -7,7 +7,13 @@ const Header = (props) => {
       <Row className="header padding-left-md">
           <Col xs={6}>
             <FaSearch  size={24} className="search-icon" />
-            <input name="Search" type="search" placeholder="Search" className="search-input"/>
+            <input 
+              name="Search" 
+              type="search"
+              value={props.value}
+              onChange={(event) => props.setSearchValue(event.target.value)}
+              placeholder="Search" 
+              className="search-input"/>
           </Col>
           <Col>Year Filter</Col>
           <Col>Type Checkbox</Col>

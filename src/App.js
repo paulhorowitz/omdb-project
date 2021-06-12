@@ -6,27 +6,31 @@ import MovieDetails from './Components/MovieDetails';
 
 const App = () => {
   const [movies, setMovies] = useState([]);
-
+  const [searchValue, setSearchValue] = useState('');
 
   // Get the movie search request using the omdb API 
 
-  const getMoviesRequest = async () => {
-    const url = "https://www.omdbapi.com/?s=avatar&apikey=fb9f1d4b";
+  const getMoviesRequest = async (searchValue) => {
+    const url = `https://www.omdbapi.com/?s=${searchValue}&apikey=fb9f1d4b`;
 
     const response = await fetch(url);
     const responseJson = await response.json();
 
-    console.log(responseJson.Search)
-    setMovies(responseJson.Search)
+    // Create search list only if data is available 
+    if (responseJson.Search) {
+      setMovies(responseJson.Search);
+    }
   }
 
+  // Run fetch movies function when search data updates
+
   useEffect(() => {
-    getMoviesRequest();
-  }, []);
+    getMoviesRequest(searchValue);
+  }, [searchValue]);
 
   return (
     <div className="App">
-      <Header />
+      <Header searchValue={searchValue} setSearchValue={setSearchValue}/>
       <MovieList movies={movies} />
       <MovieDetails movies={movies} />
     </div>
