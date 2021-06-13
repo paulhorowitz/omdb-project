@@ -15,6 +15,7 @@ const App = () => {
 
     const response = await fetch(url);
     const responseJson = await response.json();
+    console.log(responseJson)
 
     // Create search list only if data is available 
     if (responseJson.Search) {
