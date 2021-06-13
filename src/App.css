@@ -1,4 +1,6 @@
-
+.App {
+  height: 100px;
+}
 .header {
   background-color: rgb(71, 65, 65) !important;
   color: white;
@@ -20,24 +22,12 @@
   margin-left: 1em;
 }
 
-.search-input::-webkit-search-cancel-button {
-
-  -webkit-appearance: none;
-  height: 20px;
-  width: 20px;
-  background: white;
-}
-
 .card-movie-list {
-  font-size: 18px;
+  font-size: 16px;
   color: #666666;
   width: 40rem;
-  height: 12rem ;
-}
-
-.card-movie-list {
   height: 100vh;
-  overflow:auto;
+  overflow-y: scroll;
 }
 
 .movie-list-thumbnail {
@@ -46,4 +36,18 @@
   object-fit:cover;
   border: none;
   object-position:top;
+  padding-left: 1em;
+}
+
+.movie-card {
+  justify-content: center;
+}
+
+.movie-card:hover{
+  background-color: #EBEBEB;
+}
+
+.movie-list-results-length {
+  padding: 1.5em;
+  font-size: 0.8em;
 }
