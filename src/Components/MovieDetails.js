@@ -10,7 +10,6 @@ const MovieDetails = (props) => {
     if (currentMovieObject) {
       movieTitle = currentMovieObject.Title;
       moviePoster = currentMovieObject.Poster;
-      movieT
     }
     
   }
@@ -19,6 +18,7 @@ const MovieDetails = (props) => {
     <div>
       <h5>Movie details</h5>
       <h6>{movieTitle}</h6>
+      <h6>{moviePoster}</h6>
     </div>
   )
 }
