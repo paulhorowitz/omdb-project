@@ -1,8 +1,8 @@
 import React from 'react';
 import {Card, ListGroup, Container, Col, Row} from 'react-bootstrap';
 
-function MovieList(props) {
-  console.log(props)
+const MovieList = (props) => {
+  
   if (props.movies) {
   return (
     <div className="card-movie-list">
@@ -21,7 +21,7 @@ function MovieList(props) {
           </Container>
         </Card>      
         {props.movies.map((movie) => (
-          <Card key={movie.imdbID} className="movie-card">
+          <Card key={movie.imdbID} className="movie-card" onClick={() => props.handleMovieClick(movie.imdbID)}>
             <Container>
               <ListGroup variant="flush" className="m-2">
               <Row>

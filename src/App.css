@@ -1,6 +1,7 @@
 .App {
   height: 100px;
 }
+
 .header {
   background-color: rgb(71, 65, 65) !important;
   color: white;
@@ -41,6 +42,7 @@
 
 .movie-card {
   justify-content: center;
+  cursor: pointer;
 }
 
 .movie-card:hover{
