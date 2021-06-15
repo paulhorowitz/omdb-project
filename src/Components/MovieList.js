@@ -27,7 +27,7 @@ const MovieList = (props) => {
               <Row>
                 <Col xs={2}><img className="movie-list-thumbnail" src={movie.Poster} alt="movie poster"/></Col>
                 <Col>
-                  <Col>{movie.Title}</Col>
+                  <Col className="movie-title">{movie.Title}</Col>
                   <Col>{movie.Year}</Col>      
                 </Col>
               </Row>
