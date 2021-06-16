@@ -1,5 +1,6 @@
 import React from 'react';
 import {Col, Row, Container} from 'react-bootstrap';
+import {FaRegBookmark} from 'react-icons/fa';
 
 import G from '../images/g-rating.png';
 import PG from '../images/pg-rating.png';
@@ -16,7 +17,10 @@ const MovieDetails = (props) => {
 
   const detailsResults = props.detailsResults;
 
-  function renderRatingsSwitch(rating) {
+  let rottenTomatoesRating = "unknown";
+  let metaCriticRating = "unknown";
+
+  function renderAgeRatings(rating) {
     console.log(detailsResults)
     if (rating)
     {
@@ -43,25 +47,55 @@ const MovieDetails = (props) => {
           return unrated;
       }
     }
-  }
+  }  
 
   return (
 
-    <Container fluid>
-    
-      {detailsResults &&
-        <img src={detailsResults.Poster} alt="movie-poster"></img>
-      }
-      <h5>{props.detailsResults.Title}</h5>
-      {detailsResults &&
-        <img src={renderRatingsSwitch(detailsResults.Rated)} alt="rating"></img>
-      }
-      <p>{props.detailsResults.Title}</p>
-      <p>{detailsResults.Genre}</p>
-      <p>{detailsResults.Runtime}</p>
-      <p>{detailsResults.Actors}</p>
-      <p>{detailsResults.Plot}</p>
-    </div>
+    <Container>
+      <Row>
+        <Col>
+          {detailsResults &&
+            <img className="movie-poster" src={detailsResults.Poster} alt="movie-poster"></img>
+          }
+        </Col>
+        <Col>
+          <Row>
+            <button className="watchlist"><span><FaRegBookmark /></span>Watchlist</button>
+          </Row>
+          <Row  className="movie-details-section">
+            <h2>{props.detailsResults.Title}</h2>
+          </Row>
+          <Row>
+            {detailsResults &&
+            <img className="rating-image" src={renderAgeRatings(detailsResults.Rated)} alt="rating"></img>
+            }
+            <p>{detailsResults.Year}</p><span> </span>
+            <p>{detailsResults.Genre}</p><span> </span>
+            <p>{detailsResults.Runtime}</p><span> </span>
+          </Row>
+          <Row >
+            <p>{detailsResults.Actors}</p>
+          </Row>
+        </Col>
+      </Row>
+      <Row className="plot-section">
+        <p>{detailsResults.Plot}</p>
+      </Row>
+      <Row className="ratings-section text-center">
+        <Col className="first-rating" xs={4}>
+          <p>{detailsResults && detailsResults.Ratings[0] && detailsResults.Ratings[0].Value ? detailsResults.Ratings[0].Value : null}</p>
+          <p>{detailsResults && detailsResults.Ratings[0] && detailsResults.Ratings[0].Source ? detailsResults.Ratings[0].Source : null}</p>
+        </Col>
+        <Col xs={4}>
+        <p>{detailsResults && detailsResults.Ratings[1] && detailsResults.Ratings[1].Value ? detailsResults.Ratings[1].Value : null}</p>
+        <p>{detailsResults && detailsResults.Ratings[1] && detailsResults.Ratings[1].Source ? detailsResults.Ratings[1].Source : null}</p>
+        </Col>
+        <Col className="third-rating" xs={4}>
+        <p>{detailsResults && detailsResults.Ratings[2] && detailsResults.Ratings[2].Value ? detailsResults.Ratings[2].Value : null}</p>
+        <p>{detailsResults && detailsResults.Ratings[2] && detailsResults.Ratings[2].Source ? detailsResults.Ratings[2].Source : null}</p>
+        </Col>
+      </Row>
+    </Container>
   )
 }
 

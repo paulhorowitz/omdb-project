@@ -1,5 +1,6 @@
 .App {
   height: 100px;
+  font-family: 'Libre Franklin', sans-serif;
 }
 
 .header {
@@ -26,7 +27,6 @@
 .card-movie-list {
   font-size: 16px;
   color: #666666;
-  width: 40rem;
   height: 100vh;
   overflow-y: scroll;
 }
@@ -43,6 +43,11 @@
 .movie-card {
   justify-content: center;
   cursor: pointer;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  padding-top: 1em; 
+  padding-bottom: 1em; 
 }
 
 .movie-card:hover{
@@ -52,4 +57,44 @@
 .movie-list-results-length {
   padding: 1.5em;
   font-size: 0.8em;
+}
+
+.rating-image {
+  width: 50px;
+  height: 20px;
+}
+
+.watchlist {
+  border-radius: 0.3em;
+  background-color: transparent;
+  padding: 0.5em;
+}
+
+.movie-poster {
+  padding-top: 2rem;
+  width: 15rem;
+}
+
+.plot-section {
+  border-top: 1px solid #666666;
+  margin: 2rem;
+  padding-top: 2rem;
+}
+
+.ratings-section {
+  border-top: 1px solid #666666;
+  margin: 2rem;
+  padding-top: 2rem;
+}
+
+.movie-details-section {
+  padding-top: 8rem;
+}
+
+.first-rating {
+  border-right: 1px solid #666666;
+}
+
+.third-rating {
+  border-left: 1px solid #666666;
 }

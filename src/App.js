@@ -10,6 +10,7 @@ const App = () => {
   const [searchValue, setSearchValue] = useState('');
   const [results, setResults] = useState('');
   const [currentMovie, setCurrentMovie] = useState('');
+  const [detailsResults, setDetailsResults] = useState('');
 
   // Get the movie search request using the omdb API 
 
@@ -26,14 +27,25 @@ const App = () => {
     }
   }
 
+  // Get full movie details using the omdb api
+
+  const getMovieDetailsRequest = async (movie) => {
+    const detailsURL = `https://www.omdbapi.com/?i=${movie}&apikey=fb9f1d4b`
+
+    const detailsResponse = await fetch(detailsURL);
+    const detailsResponseJson = await detailsResponse.json();
+
+    // Create movie details only if data is available
+    if (detailsResponseJson) {
+      setDetailsResults(detailsResponseJson);
+    }
+  }
+
   // Run fetch movies function when search data updates
 
   useEffect(() => {
     getMoviesRequest(searchValue);
   }, [searchValue]);
-
-  useEffect(() => {
-  },[currentMovie])
 
   const addCurrentMovie = (movie) => {
       const newCurrentMovie = movie;
@@ -44,17 +56,20 @@ const App = () => {
     <div>
       <Container fluid className="App">
         <Row>
-          <Col>
+          <Col sm={true}>
             <Header searchValue={searchValue} setSearchValue={setSearchValue}/>
           </Col>
         </Row>
         <Row>
-          <MovieList movies={movies} results={results} handleMovieClick = {addCurrentMovie}/>
-          <MovieDetails movies={movies} currentMovie={currentMovie}/>
+          <Col xs={4}>
+            <MovieList movies={movies} results={results} handleMovieClick = {getMovieDetailsRequest}/>
+          </Col>
+          <Col xs={8}>
+            <MovieDetails movies={movies} currentMovie={currentMovie} detailsResults={detailsResults} />
+          </Col>
         </Row>
       </Container>
     </div>
   );
 }
-
 export default App;
