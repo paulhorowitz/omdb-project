@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col, Row, Container} from 'react-bootstrap';
+import {Col, Row, Container, Image} from 'react-bootstrap';
 import {FaRegBookmark} from 'react-icons/fa';
 
 import G from '../images/g-rating.png';
@@ -53,27 +53,27 @@ const MovieDetails = (props) => {
 
     <Container>
       <Row>
-        <Col>
+        <Col xs={4}>
           {detailsResults &&
-            <img className="movie-poster" src={detailsResults.Poster} alt="movie-poster"></img>
+            <Image src={detailsResults.Poster} alt="movie-poster" className="movie-poster" fluid />
           }
         </Col>
-        <Col>
-          <Row>
+        <Col xs={8}>
+          <Row className="justify-content-end">
             <button className="watchlist"><span><FaRegBookmark /></span>Watchlist</button>
           </Row>
-          <Row  className="movie-details-section">
+          <Row className="movie-details-section justify-content-start">
             <h2>{props.detailsResults.Title}</h2>
           </Row>
-          <Row>
+          <Row className="movie-details-section justify-content-start">
             {detailsResults &&
             <img className="rating-image" src={renderAgeRatings(detailsResults.Rated)} alt="rating"></img>
             }
-            <p>{detailsResults.Year}</p><span> </span>
-            <p>{detailsResults.Genre}</p><span> </span>
-            <p>{detailsResults.Runtime}</p><span> </span>
+            <span>&nbsp;</span><p>{detailsResults.Year} </p><span>&nbsp;</span>
+            <p>{detailsResults.Genre} </p><span>&nbsp;&#8226;&nbsp;</span>
+            <p>{detailsResults.Runtime} </p>
           </Row>
-          <Row >
+          <Row className="movie-details-section justify-content-start">
             <p>{detailsResults.Actors}</p>
           </Row>
         </Col>
