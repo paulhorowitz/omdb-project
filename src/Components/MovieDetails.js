@@ -17,9 +17,6 @@ const MovieDetails = (props) => {
 
   const detailsResults = props.detailsResults;
 
-  let rottenTomatoesRating = "unknown";
-  let metaCriticRating = "unknown";
-
   function renderAgeRatings(rating) {
     if (rating)
     {
@@ -52,34 +49,51 @@ const MovieDetails = (props) => {
 
     <Container>
       <Row>
-        <Col xs={4}>
+        <Col xs={4} className="my-5">
           {detailsResults &&
             <Image src={detailsResults.Poster} alt="movie-poster" className="movie-poster" fluid />
           }
         </Col>
+
         <Col xs={8}>
-          <Row className="justify-content-end">
-            <button className="watchlist"><span><FaRegBookmark /></span>Watchlist</button>
-          </Row>
-          <Row className="movie-details-section justify-content-start">
-            <h2>{props.detailsResults.Title}</h2>
-          </Row>
-          <Row className="movie-details-section justify-content-start">
-            {detailsResults &&
-            <img className="rating-image" src={renderAgeRatings(detailsResults.Rated)} alt="rating"></img>
-            }
-            <span>&nbsp;</span><p>{detailsResults.Year} </p><span>&nbsp;</span>
-            <p>{detailsResults.Genre} </p><span>&nbsp;&#8226;&nbsp;</span>
-            <p>{detailsResults.Runtime} </p>
-          </Row>
-          <Row className="movie-details-section justify-content-start">
-            <p>{detailsResults.Actors}</p>
-          </Row>
+          {detailsResults &&
+            <Row className="justify-content-end my-5">
+              <button className="watchlist"><span><FaRegBookmark /></span><span id="watchlist-title">Watchlist</span></button>
+            </Row>
+          }
+
+          {detailsResults &&
+            <Row className="movie-details-section justify-content-start">
+              <h2>{props.detailsResults.Title}</h2>
+            </Row>
+          }
+
+          {detailsResults &&
+            <Row className="movie-details-section justify-content-start">
+              {detailsResults &&
+              <img className="rating-image" src={renderAgeRatings(detailsResults.Rated)} alt="rating"></img>
+              }
+              <span>&nbsp;</span><p>{detailsResults.Year} </p><span>&nbsp;</span>
+              <p>{detailsResults.Type} </p><span>&nbsp;&#8226;&nbsp;</span>
+              <p>{detailsResults.Runtime} </p>
+            </Row>
+          }
+
+          {detailsResults &&
+            <Row className="movie-details-section justify-content-start">
+              <p>{detailsResults.Actors}</p>
+            </Row>
+          }
         </Col>
       </Row>
+
+      {detailsResults &&
       <Row className="plot-section">
         <p>{detailsResults.Plot}</p>
       </Row>
+      }
+
+      {detailsResults &&
       <Row className="ratings-section text-center">
         <Col className="first-rating" xs={4}>
           <p>{detailsResults && detailsResults.Ratings[0] && detailsResults.Ratings[0].Value ? detailsResults.Ratings[0].Value : null}</p>
@@ -94,6 +108,8 @@ const MovieDetails = (props) => {
         <p>{detailsResults && detailsResults.Ratings[2] && detailsResults.Ratings[2].Source ? detailsResults.Ratings[2].Source : null}</p>
         </Col>
       </Row>
+      }
+
     </Container>
   )
 }

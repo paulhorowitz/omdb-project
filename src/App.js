@@ -9,7 +9,6 @@ const App = () => {
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [results, setResults] = useState('');
-  const [currentMovie, setCurrentMovie] = useState('');
   const [detailsResults, setDetailsResults] = useState('');
   const [radioValue, setRadioValue] = useState(['Any']);
 
@@ -42,9 +41,9 @@ const App = () => {
     }
   }
 
-  // Get the filtered genre movie search request using the omdb API 
+  // Get the filtered type movie search request using the omdb API 
 
-  const getGenreFilteredMoviesRequest = async (radioValue) => {
+  const getTypeFilteredMoviesRequest = async (radioValue) => {
     const url = `https://www.omdbapi.com/?s=${searchValue}&apikey=fb9f1d4b&type=${radioValue}`;
 
     const response = await fetch(url);
@@ -64,17 +63,12 @@ const App = () => {
     getMoviesRequest(searchValue);
   }, [searchValue]);
 
-  const addCurrentMovie = (movie) => {
-      const newCurrentMovie = movie;
-      setCurrentMovie(() => newCurrentMovie);
-  }
-
   return (
     <div>
       <Container fluid className="App">
         <Row>
           <Col sm={true}>
-            <Header searchValue={searchValue} setSearchValue={setSearchValue} radioValue={radioValue} setRadioValue={setRadioValue} getGenreFilteredMoviesRequest={getGenreFilteredMoviesRequest}/>
+            <Header searchValue={searchValue} setSearchValue={setSearchValue} radioValue={radioValue} setRadioValue={setRadioValue} getTypeFilteredMoviesRequest={getTypeFilteredMoviesRequest}/>
           </Col>
         </Row>
         <Row>
@@ -82,7 +76,7 @@ const App = () => {
             <MovieList movies={movies} results={results} handleMovieClick = {getMovieDetailsRequest}/>
           </Col>
           <Col xs={8}>
-            <MovieDetails movies={movies} currentMovie={currentMovie} detailsResults={detailsResults} />
+            <MovieDetails movies={movies} detailsResults={detailsResults} />
           </Col>
         </Row>
       </Container>

@@ -28,7 +28,7 @@ const MovieList = (props) => {
                 <Col xs={2}><img className="movie-list-thumbnail" src={movie.Poster} alt="movie poster"/></Col>
                 <Col>
                   <Col className="movie-title">{movie.Title}</Col>
-                  <Col>{movie.Year}</Col>      
+                  <Col className="movie-year">{movie.Year}</Col>      
                 </Col>
               </Row>
               </ListGroup>

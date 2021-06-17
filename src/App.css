@@ -4,7 +4,8 @@
 }
 
 h2 {
-  font-weight: 800;
+  font-weight:700;
+  font-family: 'Heebo', sans-serif;
 }
 
 .header {
@@ -24,7 +25,6 @@ h2 {
   color:white;
   border: none;
   outline:white;
-  height:30px;
   margin-left: 1em;
 }
 
@@ -63,6 +63,10 @@ h2 {
   font-size: 0.8em;
 }
 
+.movie-year {
+  font-size: 0.8rem;
+}
+
 .rating-image {
   max-width: 2rem;
   max-height: 2rem;
@@ -76,8 +80,12 @@ h2 {
   padding: 0.5em;
 }
 
+#watchlist-title {
+  font-size: 10pt;
+  padding-left: 0.5rem;
+}
+
 .movie-poster {
-  padding-top: 2rem;
   margin-left: 2rem;
 
 }
@@ -114,13 +122,17 @@ h2 {
   margin-left: 10px;
 }
 
+.header-headings {
+  font-size: 10pt;
+  text-transform: uppercase;
+}
+
+
 @media (max-width: 1200px) {
   .movie-poster {
     display: none;
   }
-}
 
-@media (max-width: 900px) {
   .movie-list-thumbnail{
     display: none;
   }
