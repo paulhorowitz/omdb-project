@@ -1,6 +1,7 @@
 import React from 'react';
 import {Row, Col} from 'react-bootstrap';
 import { FaSearch } from 'react-icons/fa';
+import Genre from './Genre'
 
 const Header = (props) => {
   return (
@@ -17,7 +18,7 @@ const Header = (props) => {
               autoComplete="off"/>
           </Col>
           <Col>Year Filter</Col>
-          <Col>Type Checkbox</Col>
+          <Col><Genre radioValue={props.radioValue} setRadioValue={props.setRadioValue} getGenreFilteredMoviesRequest={props.getGenreFilteredMoviesRequest}/></Col>
       </Row>
   )
 }

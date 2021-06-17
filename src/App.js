@@ -11,6 +11,7 @@ const App = () => {
   const [results, setResults] = useState('');
   const [currentMovie, setCurrentMovie] = useState('');
   const [detailsResults, setDetailsResults] = useState('');
+  const [radioValue, setRadioValue] = useState(['Any']);
 
   // Get the movie search request using the omdb API 
 
@@ -41,6 +42,22 @@ const App = () => {
     }
   }
 
+  // Get the filtered genre movie search request using the omdb API 
+
+  const getGenreFilteredMoviesRequest = async (radioValue) => {
+    const url = `https://www.omdbapi.com/?s=${searchValue}&apikey=fb9f1d4b&type=${radioValue}`;
+
+    const response = await fetch(url);
+    const responseJson = await response.json();
+
+    // Create search list only if data is available 
+    if (responseJson.Search) {
+      setMovies(responseJson.Search);
+      setResults(responseJson.totalResults)
+      console.log(url)
+    }
+  }
+
   // Run fetch movies function when search data updates
 
   useEffect(() => {
@@ -57,7 +74,7 @@ const App = () => {
       <Container fluid className="App">
         <Row>
           <Col sm={true}>
-            <Header searchValue={searchValue} setSearchValue={setSearchValue}/>
+            <Header searchValue={searchValue} setSearchValue={setSearchValue} radioValue={radioValue} setRadioValue={setRadioValue} getGenreFilteredMoviesRequest={getGenreFilteredMoviesRequest}/>
           </Col>
         </Row>
         <Row>

@@ -21,7 +21,6 @@ const MovieDetails = (props) => {
   let metaCriticRating = "unknown";
 
   function renderAgeRatings(rating) {
-    console.log(detailsResults)
     if (rating)
     {
       switch(rating) {

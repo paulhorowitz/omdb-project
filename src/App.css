@@ -106,6 +106,14 @@ h2 {
   border-left: 1px solid #666666;
 }
 
+.radio-labels {
+  font-size: 10pt;
+}
+
+.radio-button {
+  margin-left: 10px;
+}
+
 @media (max-width: 1200px) {
   .movie-poster {
     display: none;
