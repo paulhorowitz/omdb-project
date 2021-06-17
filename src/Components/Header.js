@@ -13,7 +13,8 @@ const Header = (props) => {
               value={props.value}
               onChange={(event) => props.setSearchValue(event.target.value)}
               placeholder="Search" 
-              className="search-input"/>
+              className="search-input"
+              autoComplete="off"/>
           </Col>
           <Col>Year Filter</Col>
           <Col>Type Checkbox</Col>
