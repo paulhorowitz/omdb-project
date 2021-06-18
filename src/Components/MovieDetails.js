@@ -50,7 +50,7 @@ const MovieDetails = (props) => {
     <Container>
       <Row>
         <Col xs={4} className="my-5">
-          {detailsResults &&
+          {detailsResults && detailsResults.Poster !== "N/A" &&
             <Image src={detailsResults.Poster} alt="movie-poster" className="movie-poster" fluid />
           }
         </Col>
@@ -58,7 +58,7 @@ const MovieDetails = (props) => {
         <Col xs={8}>
           {detailsResults &&
             <Row className="justify-content-end my-5">
-              <button className="watchlist"><span><FaRegBookmark /></span><span id="watchlist-title">Watchlist</span></button>
+              <button className="watchlist" onClick={() => props.handleWatchlistClick(detailsResults)} ><span><FaRegBookmark /></span><span id="watchlist-title">Watchlist</span></button>
             </Row>
           }
 

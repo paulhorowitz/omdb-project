@@ -7,7 +7,6 @@ const Type = (props) => {
   }
 
   const {radioValue, getTypeFilteredMoviesRequest} = props;
-  
 
   // Run fetch type movies function when search data updates
 
@@ -17,7 +16,7 @@ const Type = (props) => {
 
   return (
     <div className="radio-labels" onChange={onValueChange}>
-      <input className="radio-button" type="radio" value="any" name="type" /> Any
+      <input className="radio-button" type="radio" value="" name="type" defaultChecked="true"/> Any
       <input className="radio-button" type="radio" value="movie" name="type" /> Movies
       <input className="radio-button" type="radio" value="series" name="type" /> Series
       <input className="radio-button" type="radio" value="episode" name="type" /> Episodes

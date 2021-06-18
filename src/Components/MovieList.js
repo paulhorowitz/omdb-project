@@ -1,8 +1,9 @@
 import React from 'react';
 import {Card, ListGroup, Container, Col, Row} from 'react-bootstrap';
+import defaultImage from '../images/default-image.jpg'
 
 const MovieList = (props) => {
-  
+
   if (props.movies) {
   return (
     <div className="card-movie-list">
@@ -25,7 +26,10 @@ const MovieList = (props) => {
             <Container>
               <ListGroup variant="flush" className="m-2">
               <Row>
-                <Col xs={2}><img className="movie-list-thumbnail" src={movie.Poster} alt="movie poster"/></Col>
+                {movie.Poster !== "N/A" ? 
+                  <Col xs={2}><img className="movie-list-thumbnail" src={movie.Poster} alt="movie poster" /></Col> : 
+                  <Col xs={2}><img className="movie-list-thumbnail" src={defaultImage} /></Col>
+                }
                 <Col>
                   <Col className="movie-title">{movie.Title}</Col>
                   <Col className="movie-year">{movie.Year}</Col>      

@@ -11,6 +11,7 @@ const App = () => {
   const [results, setResults] = useState('');
   const [detailsResults, setDetailsResults] = useState('');
   const [radioValue, setRadioValue] = useState(['Any']);
+  const [watchlist, setWatchlist] = useState([]);
 
   // Get the movie search request using the omdb API 
 
@@ -53,7 +54,6 @@ const App = () => {
     if (responseJson.Search) {
       setMovies(responseJson.Search);
       setResults(responseJson.totalResults)
-      console.log(url)
     }
   }
 
@@ -62,6 +62,11 @@ const App = () => {
   useEffect(() => {
     getMoviesRequest(searchValue);
   }, [searchValue]);
+
+  const addToWatchlist = (movie) => {
+    const newWatchlist = [...watchlist, movie];
+    setWatchlist(newWatchlist)
+  }
 
   return (
     <div>
@@ -76,7 +81,7 @@ const App = () => {
             <MovieList movies={movies} results={results} handleMovieClick = {getMovieDetailsRequest}/>
           </Col>
           <Col xs={8}>
-            <MovieDetails movies={movies} detailsResults={detailsResults} />
+            <MovieDetails movies={movies} detailsResults={detailsResults} handleWatchlistClick={addToWatchlist}/>
           </Col>
         </Row>
       </Container>

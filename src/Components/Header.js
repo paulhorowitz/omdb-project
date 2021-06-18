@@ -23,9 +23,9 @@ const Header = (props) => {
               className="search-input"
               autoComplete="off"/>
           </Col>
-          <Col>
+          <Col className="year-slider-column">
             <Row className="align-top">
-            <p className="header-headings">Year</p>
+              <p className="header-headings">Year</p>
             </Row>
             <Row>
             {/* Filter by year via range slider */}
