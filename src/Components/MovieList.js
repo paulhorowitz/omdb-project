@@ -20,7 +20,10 @@ const MovieList = (props) => {
             </Row>
             </ListGroup>
           </Container>
-        </Card>      
+        </Card>
+        
+        {/* map through list of returned movies and display cards with thumbnail, title and year */}
+
         {props.movies.map((movie) => (
           <Card key={movie.imdbID} className="movie-card" onClick={() => props.handleMovieClick(movie.imdbID)}>
             <Container>
@@ -28,7 +31,7 @@ const MovieList = (props) => {
               <Row>
                 {movie.Poster !== "N/A" ? 
                   <Col xs={2}><img className="movie-list-thumbnail" src={movie.Poster} alt="movie poster" /></Col> : 
-                  <Col xs={2}><img className="movie-list-thumbnail" src={defaultImage} /></Col>
+                  <Col xs={2}><img className="movie-list-thumbnail" src={defaultImage} alt="movie poster" /></Col>
                 }
                 <Col>
                   <Col className="movie-title">{movie.Title}</Col>

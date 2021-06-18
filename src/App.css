@@ -132,6 +132,15 @@ h2 {
   align-items: flex-start;
 }
 
+.watchlist-title {
+  text-align: center;
+  font-weight: 700;
+  padding-top: 2rem;
+}
+
+.watchlist-section {
+  border-left: 1px solid #666666;
+}
 
 @media (max-width: 1200px) {
   .movie-poster {

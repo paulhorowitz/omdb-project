@@ -4,6 +4,7 @@ import Header from './Components/Header'
 import MovieList from './Components/MovieList';
 import MovieDetails from './Components/MovieDetails';
 import {Container, Col, Row} from 'react-bootstrap';
+import Favourites from './Components/Favourites';
 
 const App = () => {
   const [movies, setMovies] = useState([]);
@@ -22,6 +23,7 @@ const App = () => {
     const responseJson = await response.json();
 
     // Create search list only if data is available 
+
     if (responseJson.Search) {
       setMovies(responseJson.Search);
       setResults(responseJson.totalResults)
@@ -37,6 +39,7 @@ const App = () => {
     const detailsResponseJson = await detailsResponse.json();
 
     // Create movie details only if data is available
+
     if (detailsResponseJson) {
       setDetailsResults(detailsResponseJson);
     }
@@ -57,15 +60,40 @@ const App = () => {
     }
   }
 
+  // Get localstorage data when app loads for the first time
+
+  useEffect(() => {
+    const movieWatchlist = JSON.parse(localStorage.getItem('react-movie-app-watchlist')
+    );
+
+    setWatchlist(movieWatchlist);
+  }, [])
+
   // Run fetch movies function when search data updates
 
   useEffect(() => {
     getMoviesRequest(searchValue);
   }, [searchValue]);
 
+  const saveToLocalStorage = (items) => {
+    localStorage.setItem('react-movie-app-watchlist', JSON.stringify(items))
+  }
+
+  // Add a movie to the watchlist and save to local storage
+
   const addToWatchlist = (movie) => {
     const newWatchlist = [...watchlist, movie];
-    setWatchlist(newWatchlist)
+    setWatchlist(newWatchlist);
+    saveToLocalStorage(newWatchlist);
+  }
+
+
+  // remove a movie from the watchlist and save to local storage
+
+  const removeFromWatchList = (movie) => {
+    const newWatchlist = watchlist.filter((watch) => watch.imdbID !== movie.imdbID);
+    setWatchlist(newWatchlist);
+    saveToLocalStorage(newWatchlist);
   }
 
   return (
@@ -80,8 +108,11 @@ const App = () => {
           <Col xs={4}>
             <MovieList movies={movies} results={results} handleMovieClick = {getMovieDetailsRequest}/>
           </Col>
-          <Col xs={8}>
-            <MovieDetails movies={movies} detailsResults={detailsResults} handleWatchlistClick={addToWatchlist}/>
+          <Col xs={6}>
+            <MovieDetails movies={movies} detailsResults={detailsResults} handleWatchlistClick={addToWatchlist} />
+          </Col>
+          <Col xs={2} className="watchlist-section">
+            <Favourites style={{border: "1px solid #666666"}} watchlist={watchlist} handleRemoveWatchlistClick={removeFromWatchList}/>
           </Col>
         </Row>
       </Container>
