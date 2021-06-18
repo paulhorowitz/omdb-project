@@ -2,6 +2,6 @@
 
 Searches the omdb API to retrieve a list of movies, then select the movie to display detailed information about it.
 
-### Filter by Type of Media (Movie, Series, Episode)
+- Filter by Type of Media (Movie, Series, Episode)
 
-### Save titles to a Watchlist with Local Storage
+- Save titles to a Watchlist with Local Storage
