@@ -7,7 +7,7 @@ const Favourites = (props) => {
     <div>
       <h3 className="watchlist-title">Watchlist</h3>
       <ul>
-      {props.watchlist.map((movie) => (
+      {props.watchlist && props.watchlist.map((movie) => (
         <li key={movie.imdbID}>{movie.Title} <FaTrash onClick={() => props.handleRemoveWatchlistClick(movie)}/></li>
       ))
       }
