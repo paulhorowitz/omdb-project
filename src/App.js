@@ -63,10 +63,13 @@ const App = () => {
   // Get localstorage data when app loads for the first time
 
   useEffect(() => {
+    if (localStorage.getItem('react-movie-app-watchlist') !== null) {
+
     const movieWatchlist = JSON.parse(localStorage.getItem('react-movie-app-watchlist')
     );
 
     setWatchlist(movieWatchlist);
+  }
   }, [])
 
   // Run fetch movies function when search data updates
